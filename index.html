@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CEC | Comprehensive Borderless Escort Dispatch Center</title>
+<style>
+body{margin:0;background:#0a0a0a;color:#e6e6e6;font-family:Arial,Helvetica,sans-serif}
+header{padding:50px 20px;text-align:center;border-bottom:1px solid #222}
+h1{font-weight:300;letter-spacing:5px}
+.subtitle{color:#888;font-size:14px;margin-top:10px}
+section{padding:70px 15%;border-bottom:1px solid #111}
+h2{font-weight:300;letter-spacing:2px;margin-bottom:20px}
+p{line-height:1.8;color:#ccc}
+.highlight{color:#fff;font-weight:bold}
+.contract-box{margin-top:30px}
+input{width:100%;padding:14px;background:#111;border:1px solid #333;color:#fff;font-size:16px}
+button{margin-top:20px;padding:12px 30px;background:#fff;color:#000;border:none;cursor:pointer;font-weight:bold;transition:.3s}
+button:hover{background:#999}
+#result{margin-top:30px;font-size:18px;letter-spacing:1px;min-height:24px}
+footer{text-align:center;padding:40px;color:#555;font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CEC</h1>
+  <div class="subtitle">Comprehensive Borderless Escort Dispatch Center</div>
+</header>
+
+<section>
+  <h2>MISSION</h2>
+  <p>CEC operates beyond political alignment, ideological preference, and territorial limitation.</p>
+  <p>We provide <span class="highlight">escort, protection, and strategic security services</span> to any entity capable of meeting our operational terms.</p>
+</section>
+
+<section>
+  <h2>POLICY</h2>
+  <p>We do not evaluate morality. We do not choose sides. We do not interfere in ideological conflicts.</p>
+  <p><span class="highlight">We evaluate contracts solely by compensation and feasibility.</span></p>
+</section>
+
+<section>
+  <h2>CONTRACT REVIEW PORTAL</h2>
+  <p>Enter proposed compensation (USD)</p>
+
+  <div class="contract-box">
+    <input type="number" id="amount" placeholder="Minimum: 5,000,000" inputmode="numeric">
+    <button id="submitBtn" type="button">Submit for Review</button>
+    <div id="result"></div>
+  </div>
+</section>
+
+<footer>CEC — Neutrality has a price.</footer>
+
+<script>
+(function(){
+  const minimum = 5000000;
+  const premium = 50000000;
+  const blackTier = 200000000;
+
+  const amountEl = document.getElementById("amount");
+  const btn = document.getElementById("submitBtn");
+  const result = document.getElementById("result");
+
+  function evaluate(){
+    const amount = Number(amountEl.value);
+
+    if (!amount || amount <= 0) {
+      result.textContent = "Submission Invalid.";
+      result.style.color = "#777";
+      return;
+    }
+
+    if (amount < minimum) {
+      result.innerHTML = "Rejected. Compensation insufficient. Further inquiries may be logged.";
+      result.style.color = "#ff4444";
+    } else if (amount >= blackTier) {
+      result.innerHTML = "BLACK TIER CONTRACT ACCEPTED.<br>Special Operations Unit Deployment Authorized.";
+      result.style.color = "#ffffff";
+      document.body.style.background = "#000";
+    } else if (amount >= premium) {
+      result.textContent = "Priority Contract Accepted. Elite Unit Assigned.";
+      result.style.color = "#00ff88";
+    } else {
+      result.textContent = "Contract Accepted. Standard Escort Deployment Initiated.";
+      result.style.color = "#00ccff";
+    }
+  }
+
+  btn.addEventListener("click", evaluate);
+  amountEl.addEventListener("keydown", (e)=>{ if(e.key==="Enter") evaluate(); });
+})();
+</script>
+
+</body>
+</html>
